@@ -1,0 +1,71 @@
+//Media query min-width(321px)
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    margin: 0%;
+    #root {
+      width: 100%;
+      height: 100%;
+      height: 180vw;
+      main {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        div.purpule-top-section {
+          width: 100%;
+          height: 30%;
+          background-image: url("/src/images/bg-main-mobile.png");
+          padding: 5%;
+
+          img.card-back {
+            height: 70%;
+            width: 75%;
+            position: relative;
+            left: 15%;
+            top: 8%;
+            z-index: 1;
+          }
+          div.card-front-logo {
+            height: 70%;
+            width: 75%;
+            position: relative;
+            bottom: 24%;
+            z-index: 2;
+
+            img.card-front {
+              height: 100%;
+              width: 100%;
+              z-index: 1;
+            }
+
+            img.card-logo {
+              height: 30%;
+              z-index: 2;
+              position: absolute;
+              right: 70%;
+              top: 9%;
+            }
+          }
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          height: 70%;
+          width: 90%;
+          padding: 5%;
+          gap: 5%;
+          background-color: rgb(34, 86, 131);
+
+          label {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

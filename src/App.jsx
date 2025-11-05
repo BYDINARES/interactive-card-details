@@ -12,7 +12,7 @@ function App() {
             src="src/images/bg-card-back.png"
             alt="card back"
           />
-          <div className="card-front-logo">
+          <div className="card-front-logo ">
             <img
               className="card-front"
               src="src/images/bg-card-front.png"
@@ -28,29 +28,43 @@ function App() {
 
         <form action="">
           {/* CARDHOLDER NAME */}
-          <label htmlFor="">
+          <label className="labels user-name-label " htmlFor="user-name">
             CARDHOLDER NAME
-            <input type="text" placeholder="e.g. Jane Applessed" />
+            <input
+              id="user-name"
+              type="text"
+              placeholder="e.g. Jane Applessed"
+            />
           </label>
 
           {/* CARD NUMBER */}
-          <label htmlFor="">
+          <label className="labels card-number-label " htmlFor="card-number">
             CARD NUMBER
-            <input type="text" placeholder="e.g. 1234 5678 9123 0000" />
+            <input
+              id="card-number"
+              type="text"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
           </label>
 
           {/* Exp. date (mm/yy) */}
-          <label htmlFor="">
-            EXP. DATE (MM/YY)
-            <input type="text" placeholder="MM" />
-            <input type="text" placeholder="YY" />
-          </label>
+          <div className="labels expiration-date-container ">
+            <p className="expiration-title">Exp. date (mm/yy)</p>
+            <input id="month" type="text" placeholder="MM" />
+            <input id="year" type="text" placeholder="YY" />
+          </div>
 
           {/* CVC */}
-          <label htmlFor="">
+          <label
+            className="labels secret-number-label "
+            htmlFor="secret-number"
+          >
             CVC
-            <input type="text" placeholder="e.g. 123" />
+            <input id="secret-number" type="number" placeholder="e.g. 123" />
           </label>
+
+          {/* BUTTON */}
+          <button id="confirmation-button">Confirm</button>
         </form>
       </main>
     </>

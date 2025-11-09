@@ -135,6 +135,7 @@ html {
           label.labels {
             height: 100%;
             font-size: 0.8rem;
+            font-weight: 500;
 
             input {
               border-style: none;
@@ -143,8 +144,15 @@ html {
               height: 70%;
               margin-top: 2%;
               border-radius: 5px;
-              border: 1px solid black;
+              padding-left: 3.5%;
+              padding-right: 3.5%;
+
+              border: 1px solid rgb(168, 168, 168);
+              font-weight: 600;
               transition: all 0.2s ease;
+              &::placeholder {
+                color: rgb(175, 175, 175);
+              }
 
               &:hover,
               &:focus-visible {
@@ -154,6 +162,20 @@ html {
                 transform: scale(1.25);
               }
             }
+            /* For Chrome, Safari, Edge, and Opera */
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+              appearance: none;
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            /* For Firefox */
+            input[type="number"] {
+              appearance: textfield;
+              -moz-appearance: textfield;
+            }
+
+            //The general error message
             p.error-message {
               font-size: 0.8rem;
               margin-bottom: 2%;
@@ -193,19 +215,42 @@ html {
               grid-column: 1/3;
               width: 100%;
               font-size: 0.8rem;
+              font-weight: 600;
             }
 
-            //General stylings for the two imputs
+            // General stylings for the two imputs
             input.date-inputs {
-              width: 80%;
-              height: 59%;
+              width: 92%;
+              height: 70%;
               grid-row: 2;
               align-self: start;
+              box-sizing: border-box;
 
               border-radius: 5px;
               border-style: none;
-              border: 1px solid black;
+              border: 1px solid rgb(168, 168, 168);
+              color: black;
+              font-weight: 600;
+              padding-left: 15%;
+              padding-right: 10%;
+              &::placeholder {
+                color: rgb(168, 168, 168);
+              }
             }
+            /* For Chrome, Safari, Edge, and Opera */
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            /* For Firefox */
+            input[type="number"] {
+              appearance: textfield;
+              -moz-appearance: textfield;
+            }
+
+            //GENERAL STYLING FOR THE ERROR MESSAGES
             p.error-message {
               grid-row: 2;
               align-self: end;
@@ -241,8 +286,10 @@ html {
             grid-row: 3/4;
 
             input#secret-number {
-              height: 90%;
+              height: 60%;
               margin-top: 7%;
+              padding-left: 8%;
+              padding-right: 8%;
             }
           }
 
@@ -255,6 +302,7 @@ html {
             margin-top: 10%;
             border-radius: 10px;
             color: aliceblue;
+            font-weight: 600;
             background-color: rgb(20, 4, 51);
 
             //Animation

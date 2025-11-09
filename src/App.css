@@ -123,6 +123,9 @@ html body #root main form label {
 html body #root main form label.labels {
   height: 100%;
   font-size: 0.8rem;
+  font-weight: 500;
+  /* For Chrome, Safari, Edge, and Opera */
+  /* For Firefox */
 }
 html body #root main form label.labels input {
   border-style: none;
@@ -131,14 +134,34 @@ html body #root main form label.labels input {
   height: 70%;
   margin-top: 2%;
   border-radius: 5px;
-  border: 1px solid black;
+  padding-left: 3.5%;
+  padding-right: 3.5%;
+  border: 1px solid rgb(168, 168, 168);
+  font-weight: 600;
   transition: all 0.2s ease;
+}
+html body #root main form label.labels input::-moz-placeholder {
+  color: rgb(175, 175, 175);
+}
+html body #root main form label.labels input::placeholder {
+  color: rgb(175, 175, 175);
 }
 html body #root main form label.labels input:hover, html body #root main form label.labels input:focus-visible {
   background-color: rgb(219, 219, 219);
 }
 html body #root main form label.labels input:active {
   transform: scale(1.25);
+}
+html body #root main form label.labels input[type=number]::-webkit-outer-spin-button,
+html body #root main form label.labels input[type=number]::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+html body #root main form label.labels input[type=number] {
+  -webkit-appearance: textfield;
+          appearance: textfield;
+  -moz-appearance: textfield;
 }
 html body #root main form label.labels p.error-message {
   font-size: 0.8rem;
@@ -163,6 +186,8 @@ html body #root main form div.expiration-date-container {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 30% 70%;
+  /* For Chrome, Safari, Edge, and Opera */
+  /* For Firefox */
 }
 html body #root main form div.expiration-date-container p.expiration-title {
   margin: 0%;
@@ -170,15 +195,37 @@ html body #root main form div.expiration-date-container p.expiration-title {
   grid-column: 1/3;
   width: 100%;
   font-size: 0.8rem;
+  font-weight: 600;
 }
 html body #root main form div.expiration-date-container input.date-inputs {
-  width: 80%;
-  height: 59%;
+  width: 92%;
+  height: 70%;
   grid-row: 2;
   align-self: start;
+  box-sizing: border-box;
   border-radius: 5px;
   border-style: none;
-  border: 1px solid black;
+  border: 1px solid rgb(168, 168, 168);
+  color: black;
+  font-weight: 600;
+  padding-left: 15%;
+  padding-right: 10%;
+}
+html body #root main form div.expiration-date-container input.date-inputs::-moz-placeholder {
+  color: rgb(168, 168, 168);
+}
+html body #root main form div.expiration-date-container input.date-inputs::placeholder {
+  color: rgb(168, 168, 168);
+}
+html body #root main form div.expiration-date-container input[type=number]::-webkit-outer-spin-button,
+html body #root main form div.expiration-date-container input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+html body #root main form div.expiration-date-container input[type=number] {
+  -webkit-appearance: textfield;
+          appearance: textfield;
+  -moz-appearance: textfield;
 }
 html body #root main form div.expiration-date-container p.error-message {
   grid-row: 2;
@@ -207,8 +254,10 @@ html body #root main form label.labels.secret-number-label {
   grid-row: 3/4;
 }
 html body #root main form label.labels.secret-number-label input#secret-number {
-  height: 90%;
+  height: 60%;
   margin-top: 7%;
+  padding-left: 8%;
+  padding-right: 8%;
 }
 html body #root main form button#confirmation-button {
   border-style: none;
@@ -217,6 +266,7 @@ html body #root main form button#confirmation-button {
   margin-top: 10%;
   border-radius: 10px;
   color: aliceblue;
+  font-weight: 600;
   background-color: rgb(20, 4, 51);
   transition: all 0.2s ease;
 }

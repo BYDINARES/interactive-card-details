@@ -31,7 +31,7 @@ function App() {
       newErrors.userName = "Please enter a valid username";
     }
 
-    if (!/^\d{16}$/.test(data["card-number"])) {
+    if (!/^\d{16}$/.test(data["card-number"].replace(/\s/g, ""))) {
       newErrors.cardNumber = "Type 16 numbers";
     }
 
@@ -48,6 +48,20 @@ function App() {
     }
 
     setErrors(newErrors); // Update the state
+  }
+
+  function handleCardNumberChange(e) {
+    //See if you can us e this to add a space every 4 digits
+    // Remove all non-digit characters first
+    let value = e.target.value.replace(/\D/g, "");
+
+    // Limit to 16 digits
+    value = value.slice(0, 16);
+
+    // Add a space every 4 digits
+    const formatted = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+    e.target.value = formatted;
   }
 
   /* //All the inputs
@@ -88,7 +102,7 @@ function App() {
           </div>
         </section>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           {/* CARDHOLDER NAME */}
           <label className="labels user-name-label " htmlFor="user-name">
             CARDHOLDER NAME
@@ -97,6 +111,7 @@ function App() {
               name="user-name"
               type="text"
               placeholder="e.g. Jane Applessed"
+              onFocus={() => setErrors((prev) => ({ ...prev, userName: "" }))}
             />
             <p id="username-error" className="error-message">
               {errors.userName}
@@ -111,6 +126,7 @@ function App() {
               type="number"
               name="card-number"
               placeholder="e.g. 1234 5678 9123 0000"
+              onFocus={() => setErrors((prev) => ({ ...prev, cardNumber: "" }))}
             />
             <p id="card-number-error" className="error-message">
               {errors.cardNumber}
@@ -126,7 +142,7 @@ function App() {
               className="date-inputs"
               type="number"
               placeholder="MM"
-              onFocus={() => setErrors((prev) => ({ ...prev, userName: "" }))} //bUSCA UN FORMA THE ECONDER LOS ERRORS CUNADO CLIKEAS
+              onFocus={() => setErrors((prev) => ({ ...prev, month: "" }))}
             />
             <p id="message-month" className="error-message">
               {errors.month}
@@ -138,6 +154,7 @@ function App() {
               className="date-inputs"
               placeholder="YY"
               type="number"
+              onFocus={() => setErrors((prev) => ({ ...prev, year: "" }))}
             />
             <p id="message-year" className="error-message">
               {errors.year}
@@ -155,6 +172,7 @@ function App() {
               name="secret-number"
               type="number"
               placeholder="e.g. 123"
+              onFocus={() => setErrors((prev) => ({ ...prev, cvc: "" }))}
             />
             <p id="secret-number-error" className="error-message">
               {errors.cvc}

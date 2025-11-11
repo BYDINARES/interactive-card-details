@@ -64,13 +64,23 @@ function App() {
     e.target.value = formatted;
   }
 
-  /* //All the inputs
-  const userName = formData.get("user-name");
-  const cardNumber = formData.get("card-number");
-  const monthinput = formData.get("month-input");
-  const yearInput = formData.get("year-input"); 
-  const secrectNumber = formData.get("secret-number"); */
+  function handleInputNoNegatives(e) {
+    let value = e.target.value.replace(/[^\d]/g, "");
 
+    return value;
+  }
+
+  function handleExpDates(e) {
+    const onlyPositiveNumbers = handleInputNoNegatives(e).slice(0, 2);
+
+    e.target.value = onlyPositiveNumbers;
+  }
+
+  function handleCVC(e) {
+    const onlyPositiveCVC = handleInputNoNegatives(e).slice(0, 3);
+
+    e.target.value = onlyPositiveCVC;
+  }
   return (
     <>
       <main>
@@ -123,10 +133,11 @@ function App() {
             CARD NUMBER
             <input
               id="card-number"
-              type="number"
+              type="text"
               name="card-number"
               placeholder="e.g. 1234 5678 9123 0000"
               onFocus={() => setErrors((prev) => ({ ...prev, cardNumber: "" }))}
+              onInput={handleCardNumberChange}
             />
             <p id="card-number-error" className="error-message">
               {errors.cardNumber}
@@ -140,9 +151,11 @@ function App() {
               id="month"
               name="month-input"
               className="date-inputs"
-              type="number"
+              type="text"
+              min="0"
               placeholder="MM"
               onFocus={() => setErrors((prev) => ({ ...prev, month: "" }))}
+              onInput={handleExpDates}
             />
             <p id="message-month" className="error-message">
               {errors.month}
@@ -155,6 +168,7 @@ function App() {
               placeholder="YY"
               type="number"
               onFocus={() => setErrors((prev) => ({ ...prev, year: "" }))}
+              onInput={handleExpDates}
             />
             <p id="message-year" className="error-message">
               {errors.year}
@@ -173,6 +187,7 @@ function App() {
               type="number"
               placeholder="e.g. 123"
               onFocus={() => setErrors((prev) => ({ ...prev, cvc: "" }))}
+              onInput={handleCVC}
             />
             <p id="secret-number-error" className="error-message">
               {errors.cvc}

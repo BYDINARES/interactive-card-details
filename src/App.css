@@ -77,7 +77,8 @@ html body #root main section.purpule-top-section div.card-front-logo h3.front-ca
   z-index: 2;
   position: absolute;
   bottom: 10%;
-  right: 8%;
+  width: 100%;
+  text-align: center;
   font-size: 1.3rem;
   color: aliceblue;
 }
@@ -284,6 +285,7 @@ html body #root main form button#confirmation-button {
   border-radius: 10px;
   color: aliceblue;
   font-weight: 600;
+  font-size: 1rem;
   background-color: rgb(20, 4, 51);
   transition: all 0.2s ease;
 }
@@ -292,4 +294,10 @@ html body #root main form button#confirmation-button:hover, html body #root main
 }
 html body #root main form button#confirmation-button:active {
   transform: scale(1.2);
+}
+
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 20px;
+  }
 }/*# sourceMappingURL=App.css.map */

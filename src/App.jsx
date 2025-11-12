@@ -10,6 +10,16 @@ function App() {
     cvc: "",
   });
 
+  const [usersInput, setUsersInput] = useState({
+    //Add a function that retieves and changes the cards' display
+    userName: "",
+    cardNumber: "",
+    month: "",
+    year: "",
+    cvc: "",
+  });
+
+  //Functions to handle the user's input
   function handleSubmit(event) {
     event.preventDefault();
 

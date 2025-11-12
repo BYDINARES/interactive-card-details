@@ -48,12 +48,12 @@ html {
               margin-right: 0%;
               position: relative;
 
-              bottom: 59.5%;
+              bottom: 58%;
               left: 80%;
               z-index: 2;
 
               color: aliceblue;
-              font-size: 0.6rem;
+              font-size: 3vw;
             }
           }
 
@@ -85,7 +85,7 @@ html {
               width: 100%;
               text-align: center;
 
-              font-size: 1.3rem;
+              font-size: 6.5vw;
               color: aliceblue;
             }
             p.card-holder-name {
@@ -153,6 +153,7 @@ html {
               transition: all 0.2s ease;
               &::placeholder {
                 color: rgb(175, 175, 175);
+                font-size: 0.9rem;
               }
 
               &:hover,
@@ -240,7 +241,8 @@ html {
               transition: all 0.2s ease;
 
               &::placeholder {
-                color: rgb(168, 168, 168);
+                color: rgb(175, 175, 175);
+                font-size: 0.9rem;
               }
 
               &:hover,

@@ -48,11 +48,11 @@ html body #root main section.purpule-top-section div.card-back-logo p#secret-num
   margin: 0%;
   margin-right: 0%;
   position: relative;
-  bottom: 59.5%;
+  bottom: 58%;
   left: 80%;
   z-index: 2;
   color: aliceblue;
-  font-size: 0.6rem;
+  font-size: 3vw;
 }
 html body #root main section.purpule-top-section div.card-front-logo {
   height: 70%;
@@ -79,7 +79,7 @@ html body #root main section.purpule-top-section div.card-front-logo h3.front-ca
   bottom: 10%;
   width: 100%;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 6.5vw;
   color: aliceblue;
 }
 html body #root main section.purpule-top-section div.card-front-logo p.card-holder-name {
@@ -143,9 +143,11 @@ html body #root main form label.labels input {
 }
 html body #root main form label.labels input::-moz-placeholder {
   color: rgb(175, 175, 175);
+  font-size: 0.9rem;
 }
 html body #root main form label.labels input::placeholder {
   color: rgb(175, 175, 175);
+  font-size: 0.9rem;
 }
 html body #root main form label.labels input:hover, html body #root main form label.labels input:focus-visible {
   background-color: rgb(219, 219, 219);
@@ -218,11 +220,13 @@ html body #root main form div.expiration-date-container input#year.date-inputs {
   transition: all 0.2s ease;
 }
 html body #root main form div.expiration-date-container input#month.date-inputs::-moz-placeholder, html body #root main form div.expiration-date-container input#year.date-inputs::-moz-placeholder {
-  color: rgb(168, 168, 168);
+  color: rgb(175, 175, 175);
+  font-size: 0.9rem;
 }
 html body #root main form div.expiration-date-container input#month.date-inputs::placeholder,
 html body #root main form div.expiration-date-container input#year.date-inputs::placeholder {
-  color: rgb(168, 168, 168);
+  color: rgb(175, 175, 175);
+  font-size: 0.9rem;
 }
 html body #root main form div.expiration-date-container input#month.date-inputs:hover, html body #root main form div.expiration-date-container input#month.date-inputs:focus-visible,
 html body #root main form div.expiration-date-container input#year.date-inputs:hover,
@@ -298,6 +302,74 @@ html body #root main form button#confirmation-button:active {
 
 @media screen and (min-width: 400px) {
   html {
-    font-size: 20px;
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 28px;
+  }
+}
+@media (min-width: 576px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media (min-width: 992px) {
+  html {
+    font-size: 14px;
+  }
+  html body #root {
+    height: 50vw;
+  }
+  html body #root main {
+    flex-direction: row;
+  }
+  html body #root main section.purpule-top-section {
+    height: 100%;
+    width: 20%;
+    background-image: url("/src/images/bg-main-desktop.png");
+  }
+  html body #root main section.purpule-top-section div.card-back-logo {
+    height: 30%;
+    width: 135%;
+    left: 50%;
+    top: 40%;
+  }
+  html body #root main section.purpule-top-section div.card-back-logo p#secret-number {
+    font-size: 1.5vw;
+    bottom: 60%;
+    left: 77%;
+  }
+  html body #root main section.purpule-top-section div.card-front-logo {
+    height: 30%;
+    width: 135%;
+    left: 30%;
+  }
+  html body #root main section.purpule-top-section div.card-front-logo img.card-logo {
+    height: 20%;
+    right: 75%;
+  }
+  html body #root main section.purpule-top-section div.card-front-logo h3.front-card-numders {
+    font-size: 2.3vw;
+    bottom: 10%;
+  }
+  html body #root main section.purpule-top-section div.card-front-logo p.card-holder-name {
+    top: 72%;
+    left: 8%;
+    font-size: 0.9rem;
+  }
+  html body #root main section.purpule-top-section div.card-front-logo p.expiration-date {
+    top: 72%;
+    font-size: 0.9rem;
+  }
+  html body #root main form {
+    box-sizing: border-box;
+    height: 100%;
+    width: 70%;
+    padding-right: 21%;
+    padding-left: 21%;
+    padding-top: 12%;
+    padding-bottom: 12%;
   }
 }/*# sourceMappingURL=App.css.map */

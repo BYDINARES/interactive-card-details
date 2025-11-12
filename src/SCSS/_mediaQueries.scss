@@ -1,13 +1,20 @@
 //
 @media screen and (min-width: 400px) {
   html {
-    font-size: 20px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 28px;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   html {
+    font-size: 32px;
     body {
       #root {
       }
@@ -25,11 +32,68 @@
   }
 }
 
-// Large devices (desktops, 992px and up)
+// ====== Large devices (desktops, 992px and up) =======
 @media (min-width: 992px) {
   html {
+    font-size: 14px;
     body {
       #root {
+        height: 50vw;
+        main {
+          flex-direction: row;
+
+          section.purpule-top-section {
+            height: 100%;
+            width: 20%;
+            background-image: url("/src/images/bg-main-desktop.png");
+
+            div.card-back-logo {
+              height: 30%;
+              width: 135%;
+
+              left: 50%;
+              top: 40%;
+
+              p#secret-number {
+                font-size: 1.5vw;
+                bottom: 60%;
+                left: 77%;
+              }
+            }
+            div.card-front-logo {
+              height: 30%;
+              width: 135%;
+              left: 30%;
+
+              img.card-logo {
+                height: 20%;
+                right: 75%;
+              }
+              h3.front-card-numders {
+                font-size: 2.3vw;
+                bottom: 10%;
+              }
+              p.card-holder-name {
+                top: 72%;
+                left: 8%;
+                font-size: 0.9rem;
+              }
+              p.expiration-date {
+                top: 72%;
+                font-size: 0.9rem;
+              }
+            }
+          }
+          form {
+            box-sizing: border-box;
+            height: 100%;
+            width: 70%;
+            padding-right: 21%;
+            padding-left: 21%;
+            padding-top: 12%;
+            padding-bottom: 12%;
+          }
+        }
       }
     }
   }

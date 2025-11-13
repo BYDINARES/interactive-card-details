@@ -101,11 +101,10 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  @media (min-width: 576px) {
-    html {
-      body {
-        #root {
-        }
+  html {
+    font-size: 17px;
+    body {
+      #root {
       }
     }
   }
@@ -113,11 +112,10 @@
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) {
-  @media (min-width: 576px) {
-    html {
-      body {
-        #root {
-        }
+  html {
+    font-size: 20px;
+    body {
+      #root {
       }
     }
   }

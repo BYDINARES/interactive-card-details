@@ -22,6 +22,7 @@ html body #root main {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 html body #root main section.purpule-top-section {
   width: 100%;
@@ -109,6 +110,8 @@ html body #root main form {
   width: 100%;
   padding: 5%;
   padding-top: 15%;
+  position: relative;
+  z-index: 1;
   /* CARDHOLDER NAME */
   /* CARD NUMBER */
   /* Exp. date (mm/yy) */
@@ -299,6 +302,26 @@ html body #root main form button#confirmation-button:hover, html body #root main
 html body #root main form button#confirmation-button:active {
   transform: scale(1.2);
 }
+html body #root main section.complete-state-section {
+  z-index: 2;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aliceblue;
+  justify-self: center;
+  top: 40%;
+}
+html body #root main section.complete-state-section h1 {
+  width: 100%;
+}
+html body #root main section.complete-state-section p {
+  width: 100%;
+}
+html body #root main section.complete-state-section button {
+  width: 100%;
+}
 
 @media screen and (min-width: 400px) {
   html {
@@ -371,5 +394,15 @@ html body #root main form button#confirmation-button:active {
     padding-left: 21%;
     padding-top: 12%;
     padding-bottom: 12%;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1400px) {
+  html {
+    font-size: 20px;
   }
 }/*# sourceMappingURL=App.css.map */

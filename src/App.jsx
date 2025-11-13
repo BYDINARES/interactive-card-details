@@ -10,14 +10,25 @@ function App() {
     cvc: "",
   });
 
+  //--- function that retieves and changes the cards' display ---
   const [usersInput, setUsersInput] = useState({
-    //Add a function that retieves and changes the cards' display
     userName: "",
     cardNumber: "",
     month: "",
     year: "",
     cvc: "",
   });
+
+  // The function to change the user input
+  function handleUserInputChange(e) {
+    const { name, value } = e.target;
+
+    // Update state dynamically
+    setUsersInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
 
   //Functions to handle the user's input
   function handleSubmit(event) {
@@ -37,23 +48,23 @@ function App() {
     };
 
     // Validation logic
-    if (!data["user-name"].trim()) {
+    if (!data["userName"].trim()) {
       newErrors.userName = "Please enter a valid username";
     }
 
-    if (!/^\d{16}$/.test(data["card-number"].replace(/\s/g, ""))) {
+    if (!/^\d{16}$/.test(data["cardNumber"].replace(/\s/g, ""))) {
       newErrors.cardNumber = "Type 16 numbers";
     }
 
-    if (!/^\d{2}$/.test(data["month-input"])) {
+    if (!/^\d{2}$/.test(data["month"])) {
       newErrors.month = "Type 2 numbers";
     }
 
-    if (!/^\d{2}$/.test(data["year-input"])) {
+    if (!/^\d{2}$/.test(data["year"])) {
       newErrors.year = "Type 2 numbers";
     }
 
-    if (!/^\d{3}$/.test(data["secret-number"])) {
+    if (!/^\d{3}$/.test(data["cvc"])) {
       newErrors.cvc = "Type 3 numbers";
     }
 
@@ -101,7 +112,7 @@ function App() {
               src="src/images/bg-card-back.png"
               alt="card back"
             />
-            <p id="secret-number">000</p>
+            <p id="secret-number">{usersInput.cvc ? usersInput.cvc : "000"}</p>
           </div>
 
           <div className="card-front-logo">
@@ -116,9 +127,20 @@ function App() {
               alt="card logo"
             />
             {/* The internal text inside of the card */}
-            <h3 className="front-card-numders">0000 0000 0000 0000</h3>
-            <p className="card-holder-name">Jane Applessed</p>
-            <p className="expiration-date">00/00</p>
+            <h3 className="front-card-numders">
+              {usersInput.cardNumber
+                ? usersInput.cardNumber
+                : "0000 0000 0000 0000"}
+            </h3>
+            <p className="card-holder-name">
+              {" "}
+              {usersInput.userName ? usersInput.userName : "xxx xxx"}
+            </p>
+            <p className="expiration-date">
+              {usersInput.month || usersInput.year
+                ? `${usersInput.month}/${usersInput.year}`
+                : "00/00"}
+            </p>
           </div>
         </section>
 
@@ -128,8 +150,9 @@ function App() {
             CARDHOLDER NAME
             <input
               id="user-name"
-              name="user-name"
+              name="userName"
               type="text"
+              onChange={handleUserInputChange}
               placeholder="e.g. Jane Applessed"
               onFocus={() => setErrors((prev) => ({ ...prev, userName: "" }))}
             />
@@ -139,13 +162,14 @@ function App() {
           </label>
 
           {/* CARD NUMBER */}
-          <label className="labels card-number-label " htmlFor="card-number">
+          <label className="labels card-number-label " htmlFor="cardNumber">
             CARD NUMBER
             <input
               id="card-number"
               type="text"
-              name="card-number"
+              name="cardNumber"
               placeholder="e.g. 1234 5678 9123 0000"
+              onChange={handleUserInputChange}
               onFocus={() => setErrors((prev) => ({ ...prev, cardNumber: "" }))}
               onInput={handleCardNumberChange}
             />
@@ -159,8 +183,9 @@ function App() {
             <p className="expiration-title">EXP. DATE (MM/YY)</p>
             <input
               id="month"
-              name="month-input"
+              name="month"
               className="date-inputs"
+              onChange={handleUserInputChange}
               type="text"
               min="0"
               placeholder="MM"
@@ -173,8 +198,9 @@ function App() {
 
             <input
               id="year"
-              name="year-input"
+              name="year"
               className="date-inputs"
+              onChange={handleUserInputChange}
               placeholder="YY"
               type="number"
               onFocus={() => setErrors((prev) => ({ ...prev, year: "" }))}
@@ -193,8 +219,9 @@ function App() {
             CVC
             <input
               id="secret-number"
-              name="secret-number"
+              name="cvc"
               type="number"
+              onChange={handleUserInputChange}
               placeholder="e.g. 123"
               onFocus={() => setErrors((prev) => ({ ...prev, cvc: "" }))}
               onInput={handleCVC}
@@ -207,6 +234,13 @@ function App() {
           {/* BUTTON */}
           <button id="confirmation-button">Confirm</button>
         </form>
+        <section className="complete-state-section">
+          <img src={"src/images/icon-complete.svg"} alt="A check sign" />
+          <h1>THANK YOU!</h1>
+          <p>We've added your card details</p>
+
+          <button id="complete-validation">Continue</button>
+        </section>
       </main>
     </>
   );

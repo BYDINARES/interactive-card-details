@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 function App() {
-  //================ LOGIC ========================
+  //================ States ========================
   const [errors, setErrors] = useState({
     userName: "",
     cardNumber: "",
@@ -18,6 +18,29 @@ function App() {
     year: "",
     cvc: "",
   });
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  // ================= FUNCTIONS =======================
+
+  function retrieveAllTheInputs(e) {
+    //Try to add this to all inputs to remove them
+    const form = e.target.form || document.querySelector("form");
+
+    const inputs = form.querySelectorAll("input");
+    inputs.forEach((input) => {
+      input.value = "";
+    });
+
+    // Also reset React state if needed
+    setUsersInput({
+      userName: "",
+      cardNumber: "",
+      month: "",
+      year: "",
+      cvc: "",
+    });
+  }
 
   // The function to change the user input
   function handleUserInputChange(e) {
@@ -51,24 +74,49 @@ function App() {
     if (!data["userName"].trim()) {
       newErrors.userName = "Please enter a valid username";
     }
-
     if (!/^\d{16}$/.test(data["cardNumber"].replace(/\s/g, ""))) {
       newErrors.cardNumber = "Type 16 numbers";
     }
-
     if (!/^\d{2}$/.test(data["month"])) {
       newErrors.month = "Type 2 numbers";
     }
-
     if (!/^\d{2}$/.test(data["year"])) {
       newErrors.year = "Type 2 numbers";
     }
-
     if (!/^\d{3}$/.test(data["cvc"])) {
       newErrors.cvc = "Type 3 numbers";
     }
 
+    const allValid = Object.values(newErrors)
+      .map((err) => err === "")
+      .every((valid) => valid === true);
+
+    if (!allValid) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+
     setErrors(newErrors); // Update the state
+  }
+
+  //Function to remove all the user has imputed
+  function resetForm() {
+    setUsersInput({
+      userName: "",
+      cardNumber: "",
+      month: "",
+      year: "",
+      cvc: "",
+    });
+
+    setErrors({
+      userName: "",
+      cardNumber: "",
+      month: "",
+      year: "",
+      cvc: "",
+    });
   }
 
   function handleCardNumberChange(e) {
@@ -102,6 +150,7 @@ function App() {
 
     e.target.value = onlyPositiveCVC;
   }
+
   return (
     <>
       <main>
@@ -234,13 +283,22 @@ function App() {
           {/* BUTTON */}
           <button id="confirmation-button">Confirm</button>
         </form>
-        <section className="complete-state-section">
-          <img src={"src/images/icon-complete.svg"} alt="A check sign" />
-          <h1>THANK YOU!</h1>
-          <p>We've added your card details</p>
+        {isOpen && (
+          <section className="complete-state-section">
+            <img src={"src/images/icon-complete.svg"} alt="A check sign" />
+            <h1>THANK YOU!</h1>
+            <p>We've added your card details</p>
 
-          <button id="complete-validation">Continue</button>
-        </section>
+            <button
+              id="complete-validation"
+              onClick={() => {
+                setIsOpen(false), () => resetForm();
+              }}
+            >
+              Continue
+            </button>
+          </section>
+        )}
       </main>
     </>
   );

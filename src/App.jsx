@@ -23,7 +23,7 @@ function App() {
 
   // ================= FUNCTIONS =======================
 
-  function retrieveAllTheInputs(e) {
+  /* function retrieveAllTheInputs(e) {
     //Try to add this to all inputs to remove them
     const form = e.target.form || document.querySelector("form");
 
@@ -40,7 +40,7 @@ function App() {
       year: "",
       cvc: "",
     });
-  }
+  } */
 
   // The function to change the user input
   function handleUserInputChange(e) {
@@ -77,6 +77,7 @@ function App() {
     if (!/^\d{16}$/.test(data["cardNumber"].replace(/\s/g, ""))) {
       newErrors.cardNumber = "Type 16 numbers";
     }
+
     if (!/^\d{2}$/.test(data["month"])) {
       newErrors.month = "Type 2 numbers";
     }
@@ -91,12 +92,13 @@ function App() {
       .map((err) => err === "")
       .every((valid) => valid === true);
 
-    if (!allValid) {
+    if (allValid) {
       setIsOpen(true);
     } else {
       setIsOpen(false);
     }
 
+    console.log(errors);
     setErrors(newErrors); // Update the state
   }
 
@@ -130,7 +132,10 @@ function App() {
     // Add a space every 4 digits
     const formatted = value.replace(/(\d{4})(?=\d)/g, "$1 ");
 
-    e.target.value = formatted;
+    setUsersInput((prev) => ({
+      ...prev,
+      cardNumber: formatted,
+    }));
   }
 
   function handleInputNoNegatives(e) {
@@ -142,13 +147,19 @@ function App() {
   function handleExpDates(e) {
     const onlyPositiveNumbers = handleInputNoNegatives(e).slice(0, 2);
 
-    e.target.value = onlyPositiveNumbers;
+    setUsersInput((prev) => ({
+      ...prev,
+      [e.target.name]: onlyPositiveNumbers,
+    }));
   }
 
   function handleCVC(e) {
-    const onlyPositiveCVC = handleInputNoNegatives(e).slice(0, 3);
+    let value = e.target.value.replace(/\D/g, "").slice(0, 3);
 
-    e.target.value = onlyPositiveCVC;
+    setUsersInput((prev) => ({
+      ...prev,
+      cvc: value,
+    }));
   }
 
   return (
@@ -201,6 +212,7 @@ function App() {
               id="user-name"
               name="userName"
               type="text"
+              value={usersInput.userName}
               onChange={handleUserInputChange}
               placeholder="e.g. Jane Applessed"
               onFocus={() => setErrors((prev) => ({ ...prev, userName: "" }))}
@@ -217,10 +229,10 @@ function App() {
               id="card-number"
               type="text"
               name="cardNumber"
+              value={usersInput.cardNumber}
               placeholder="e.g. 1234 5678 9123 0000"
-              onChange={handleUserInputChange}
+              onChange={handleCardNumberChange}
               onFocus={() => setErrors((prev) => ({ ...prev, cardNumber: "" }))}
-              onInput={handleCardNumberChange}
             />
             <p id="card-number-error" className="error-message">
               {errors.cardNumber}
@@ -234,6 +246,7 @@ function App() {
               id="month"
               name="month"
               className="date-inputs"
+              value={usersInput.month}
               onChange={handleUserInputChange}
               type="text"
               min="0"
@@ -248,6 +261,7 @@ function App() {
             <input
               id="year"
               name="year"
+              value={usersInput.year}
               className="date-inputs"
               onChange={handleUserInputChange}
               placeholder="YY"
@@ -270,6 +284,7 @@ function App() {
               id="secret-number"
               name="cvc"
               type="number"
+              value={usersInput.cvc}
               onChange={handleUserInputChange}
               placeholder="e.g. 123"
               onFocus={() => setErrors((prev) => ({ ...prev, cvc: "" }))}
@@ -292,7 +307,7 @@ function App() {
             <button
               id="complete-validation"
               onClick={() => {
-                setIsOpen(false), () => resetForm();
+                setIsOpen(false), resetForm();
               }}
             >
               Continue

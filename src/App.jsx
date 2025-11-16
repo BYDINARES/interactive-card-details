@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import frontCard from "./images/bg-card-front.png";
+import cardIcon from "./images/card-logo.svg";
 import backCard from "./images/bg-card-back.png";
 import checkIcon from "./images/icon-complete.svg";
 
@@ -177,11 +178,7 @@ function App() {
 
           <div className="card-front-logo">
             <img className="card-front" src={frontCard} alt="card back" />
-            <img
-              className="card-logo"
-              src="src/images/card-logo.svg"
-              alt="card logo"
-            />
+            <img className="card-logo" src={cardIcon} alt="card logo" />
             {/* The internal text inside of the card */}
             <h3 className="front-card-numders">
               {usersInput.cardNumber

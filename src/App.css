@@ -357,11 +357,23 @@ html body #root main section.complete-state-section button:active {
     font-size: 28px;
   }
 }
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   html {
     font-size: 32px;
+    body {
+      #root {
+      }
+    }
   }
-}
+} */
+/* @media (min-width: 768px) {
+  html {
+    body {
+      #root {
+      }
+    }
+  }
+} */
 @media (min-width: 992px) {
   html {
     font-size: 14px;
@@ -431,13 +443,24 @@ html body #root main section.complete-state-section button:active {
     top: auto;
   }
 }
+/* // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   html {
     font-size: 17px;
+    body {
+      #root {
+      }
+    }
   }
 }
+
+// XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) {
   html {
     font-size: 20px;
+    body {
+      #root {
+      }
+    }
   }
-}/*# sourceMappingURL=App.css.map */
+} *//*# sourceMappingURL=App.css.map */

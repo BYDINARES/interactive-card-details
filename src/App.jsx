@@ -1,5 +1,9 @@
 import { useState } from "react";
 import "./App.css";
+import frontCard from "./images/bg-card-front.png";
+import backCard from "./images/bg-card-back.png";
+import checkIcon from "./images/icon-complete.svg";
+
 function App() {
   //================ States ========================
   const [errors, setErrors] = useState({
@@ -167,20 +171,12 @@ function App() {
       <main>
         <section className="purpule-top-section">
           <div className="card-back-logo">
-            <img
-              className="card-back"
-              src="src/images/bg-card-back.png"
-              alt="card back"
-            />
+            <img className="card-back" src={backCard} alt="card back" />
             <p id="secret-number">{usersInput.cvc ? usersInput.cvc : "000"}</p>
           </div>
 
           <div className="card-front-logo">
-            <img
-              className="card-front"
-              src="src/images/bg-card-front.png"
-              alt="card back"
-            />
+            <img className="card-front" src={frontCard} alt="card back" />
             <img
               className="card-logo"
               src="src/images/card-logo.svg"
@@ -300,7 +296,7 @@ function App() {
         </form>
         {isOpen && (
           <section className="complete-state-section">
-            <img src={"src/images/icon-complete.svg"} alt="A check sign" />
+            <img src={checkIcon} alt="A check sign" />
             <h1>THANK YOU!</h1>
             <p>We've added your card details</p>
 
